@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nikel - Lançamentos</title>
+    <title>Nikel - Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./public/css/style.css">
 </head>
 
 <body id="app">
@@ -17,7 +17,7 @@
         <nav class="navbar navbar-expand navbar-light bg-white">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
-                    <img src="./assets/images/nikel-small-logo.png" alt="logo nikel" class="img-fluid" srcset="">
+                    <img src="./public/assets/images/nikel-small-logo.png" alt="logo nikel" class="img-fluid" srcset="">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -26,10 +26,10 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <div class="d-flex menu">
-                        <a href="home.html"><button class="btn" type="button"><i
-                                    class="bi bi-house-door-fill fs-4 "></i></button></a>
-                        <a href="transactions.html"><button class="btn" type="button"><i
-                                    class="bi bi-currency-exchange fs-4 color-secundary "></i></button></a>
+                        <a href="./home.html"><button class="btn" type="button"><i
+                                    class="bi bi-house-door-fill fs-4 color-secundary"></i></button></a>
+                        <a href="./transactions.html"><button class="btn" type="button"><i
+                                    class="bi bi-currency-exchange fs-4 "></i></button></a>
 
                         <div class="dropdown">
                             <button class="btn btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
@@ -38,7 +38,6 @@
                             </button>
                             <ul class="dropdown-menu logout" aria-labelledby="dropdownMenuButton1">
                                 <li><button class="dropdown-item" id="button-logout">Sair</button></li>
-                                
 
                             </ul>
                         </div>
@@ -51,12 +50,12 @@
         <div class="container-lg">
             <div class="row">
                 <div class="col d-flex mt-4 justify-content-start align-items-center">
-                    <i class="bi bi-currency-exchange color-primary icon-detail"></i>
-                    <span class="fs-2">Lançamentos</span>
+                    <i class="bi bi-cash-coin color-primary icon-detail"></i>
+                    <span class="fs-2" id="total">R$ 0,00</span>
                 </div>
                 <div class="col d-flex mt-4 justify-content-end">
                     <div class="text-center">
-                        <img src="./assets/images/coins-small.png" alt="image coins" srcset="">
+                        <img src="./public/assets/images/coins-small.png" alt="image coins" srcset="">
                     </div>
                 </div>
             </div>
@@ -64,27 +63,39 @@
                 <div class="col-12 info shadow-lg">
                     <div class="container">
                         <div class="row">
-                            <div class="col">
-                                <table class="table">
-                                    <thead>
-                                      <tr>
-                                        <th scope="col">Data</th>
-                                        <th scope="col">Valor</th>
-                                        <th scope="col">Tipo</th>
-                                        <th scope="col">Descrição</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody id="transactions-list">
-                                      
-                                    </tbody>
-                                  </table>
+                            <div class="col-6">
+                                <span class="fs-4">Entradas <i class="bi bi-arrow-down-circle fs-2 align-midle"></i>
+                                </span>
+                            </div>
+                            <div class="col-6">
+                                <span class="fs-4">Saídas <i class="bi bi-arrow-up-circle fs-2 align-midle"></i>
+                                </span>
+                            </div>
+                            <div class="col-12 my-2">
+                                <hr>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="container p-0" id="cash-in-list">
+
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="container p-0" id="cash-out-list">
+
+                                </div>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <button type="button" class="btn button-default" id=transactions-button>Ver
+                                    Todas</button>
+                            </div>
                         </div>
+                    </div>
                 </div>
             </div>
             <button class="btn button-float" data-bs-toggle="modal" data-bs-target="#transactions-modal"><i
-                class="bi bi-plus"></i></button>
+                    class="bi bi-plus"></i></button>
         </div>
 
         <!-- Modal -->
@@ -101,25 +112,25 @@
                             <div class="mb-3">
                                 <label for="value-input" class="form-label">Valor</label>
                                 <input type="number" step="any" class="form-control" id="value-input"
-                                    aria-describedby="emailHelp">
+                                    aria-describedby="emailHelp" required>
                             </div>
                             <div class="mb-3">
                                 <label for="description-input" class="form-label">Descrição</label>
-                                <input type="text" class="form-control" id="description-input">
+                                <input type="text" class="form-control" id="description-input" required>
                             </div>
                             <div class="mb-3">
                                 <label for="date-input" class="form-label">Data</label>
-                                <input type="date" class="form-control" id="date-input">
+                                <input type="date" class="form-control" id="date-input" required>
                             </div>
                             <div class="mb3">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="type-input"
-                                        id="inlineRadio1" value="1" checked>
+                                    <input class="form-check-input" type="radio" name="type-input" id="inlineRadio1"
+                                        value="1" checked>
                                     <label class="form-check-label" for="inlineRadio1">Entrada</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="type-input"
-                                        id="inlineRadio2" value="2">
+                                    <input class="form-check-input" type="radio" name="type-input" id="inlineRadio2"
+                                        value="2">
                                     <label class="form-check-label" for="inlineRadio2">Saída</label>
                                 </div>
                             </div>
@@ -137,7 +148,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-        <script src="./js/transactions.js"></script>
+    <script src="./public/js/home.js"></script>
 </body>
 
 </html>
